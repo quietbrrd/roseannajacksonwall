@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Showreel - Roseanna Jackson Wall</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="showreel.css">
+    <script src="https://player.vimeo.com/api/player.js"></script>
+</head>
+<body class="showreel-page">
+    <!-- Fixed overlay -->
+    <div class="overlay-info">
+        <a href="index.html" class="name">roseanna jackson wall</a>
+        <nav class="nav-links">
+            <a href="showreel.html" class="nav-link">cinematography</a>
+            <span class="separator">•</span>
+            <a href="photography.html" class="nav-link">photography</a>
+        </nav>
+        <a href="#" class="contact-link" id="contactLink">get in touch</a>
+    </div>
+
+    <!-- Video Container -->
+<div class="video-container">
+    <div class="video-overlay" id="videoOverlay">
+        <p class="video-overlay-text">click to play</p>
+    </div>
+    <iframe 
+        id="showreelVideo"
+        src="https://player.vimeo.com/video/1164349617?badge=0&autopause=0&player_id=0&app_id=58479" 
+        frameborder="0" 
+        allow="autoplay; fullscreen; picture-in-picture; clipboard-write" 
+        style="width:100%;height:100%;"
+        title="Your Video Title"
+        allowfullscreen>
+    </iframe>
+</div>
+
+
+    <script src="script.js"></script>
+
+    <script>
+        const overlay = document.getElementById('videoOverlay');
+        const iframe = document.getElementById('showreelVideo');
+        const player = new Vimeo.Player(iframe);
+
+        // Hide overlay when video starts playing
+        player.on('play', () => {
+            overlay.classList.add('hidden');
+        });
+
+        // Show overlay when video is paused
+        player.on('pause', () => {
+            overlay.classList.remove('hidden');
+        });
+
+        // Show overlay when video ends
+        player.on('ended', () => {
+            overlay.classList.remove('hidden');
+        });
+    </script>
+
+</body>
+</html>

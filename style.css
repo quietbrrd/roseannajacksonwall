@@ -1,0 +1,248 @@
+/* Font Face - Add your FunnelDisplay fonts */
+@font-face {
+    font-family: 'FunnelDisplay';
+    src: url('fonts/FunnelDisplay-Light.woff2') format('woff2'),
+         url('fonts/FunnelDisplay-Light.woff') format('woff');
+    font-weight: 300;
+    font-style: normal;
+    font-display: swap;
+}
+
+@font-face {
+    font-family: 'FunnelDisplay';
+    src: url('fonts/FunnelDisplay-Bold.woff2') format('woff2'),
+         url('fonts/FunnelDisplay-Bold.woff') format('woff');
+    font-weight: 700;
+    font-style: normal;
+    font-display: swap;
+}
+
+/* Reset and Base Styles */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'FunnelDisplay', sans-serif;
+    font-weight: 300;
+    background-color: #000;
+    color: #fff;
+    overflow-x: hidden;
+}
+
+a {
+    text-decoration: none;
+    color: inherit;
+}
+
+/* Fixed Overlay Info */
+.overlay-info {
+    position: fixed;
+    bottom: 30px;
+    left: 30px;
+    z-index: 1000;
+    background-color: rgba(255, 255, 255, 0.9);
+    color: #000;
+    padding: 20px 25px;
+    border: 1px solid #fff;
+    mix-blend-mode: difference;
+    filter: invert(1);
+    pointer-events: none;
+}
+
+.overlay-info * {
+    pointer-events: auto;
+    margin: 0;  /* Reset all margins */
+    padding: 0;  /* Reset all padding */
+}
+
+.name {
+    font-size: 24px;
+    font-weight: 700;
+    margin-bottom: 4px !important;  /* Force consistent spacing */
+    letter-spacing: 0.5px;
+    text-transform: lowercase;
+    line-height: 1.2;
+    display: block;
+}
+
+.nav-links {
+    font-size: 18px;
+    margin-bottom: 4px !important;  /* Force consistent spacing */
+    line-height: 1.2;
+    display: block;
+}
+
+.nav-link {
+    font-weight: 300;  /* Light weight for links */
+    transition: opacity 0.3s ease;
+}
+
+.nav-link:hover {
+    opacity: 0.6;
+}
+
+.separator {
+    margin: 0 2px;
+}
+
+.contact-link {
+    font-size: 18px;
+    font-weight: 300;  /* Light weight */
+    display: block;  /* Changed from inline-block to block */
+    transition: opacity 0.3s ease;
+    line-height: 1.2;
+}
+
+.contact-link:hover {
+    opacity: 0.6;
+}
+
+
+
+/* Photo Grid */
+.photo-grid {
+    display: grid;
+    grid-template-columns: 1fr;
+    width: 100%;
+}
+
+.photo-item {
+    position: relative;
+    width: 100%;
+    height: 100vh;
+    overflow: hidden;
+}
+
+.photo-item img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+}
+
+/* Photo Overlay - appears on hover */
+.photo-overlay {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: auto;
+    height: auto;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    opacity: 0;
+    transition: opacity 0.4s ease;
+    cursor: pointer;
+    z-index: 10;
+    background-color: transparent;
+    /* Remove mix-blend-mode from here */
+}
+
+.project-info {
+    text-align: center;
+    background-color: transparent;
+    padding: 20px 25px;
+    white-space: nowrap;
+    display: inline-block;
+    pointer-events: auto;
+    /* Remove mix-blend-mode from here too */
+}
+
+.project-title,
+.project-type {
+    color: #fff;
+    text-shadow: 0 0 8px rgba(0, 0, 0, 0.8);  /* Stronger shadow for better readability */
+}
+
+
+.project-title {
+    font-size: 18px;
+    font-weight: 700;
+    margin-bottom: 4px;
+    text-transform: lowercase;
+    line-height: 1.2;
+}
+
+.project-type {
+    font-size: 12px;
+    font-weight: 300;
+    opacity: 0.8;
+    text-transform: lowercase;
+    margin: 0;
+    line-height: 1.2;
+}
+
+/* Mobile Responsiveness */
+@media (max-width: 768px) {
+    .overlay-info {
+        bottom: 20px;
+        left: 20px;
+        padding: 15px 18px;
+    }
+
+    .name {
+        font-size: 16px;  /* was 14px */
+    }
+
+    .nav-links,
+    .contact-link {
+        font-size: 14px;  /* was 13px */
+    }
+
+    .photo-overlay {
+        width: 70%;
+        height: 60%;
+        opacity: 0;
+    }
+
+    /* Show overlay on tap for mobile */
+    .photo-item.active .photo-overlay {
+        opacity: 1;
+    }
+
+    .project-info {
+        padding: 20px 25px;
+    }
+
+    .project-title {
+        font-size: 20px;  /* was 22px - keeps it smaller than your name's hierarchy */
+    }
+
+    .project-type {
+        font-size: 11.5px;  /* was 14px - maintains ratio with title */
+    }
+}
+
+@media (max-width: 480px) {
+    .overlay-info {
+        bottom: 15px;
+        left: 15px;
+        padding: 12px 15px;
+    }
+
+    .name {
+        font-size: 14px;  /* was 12px */
+    }
+
+    .nav-links,
+    .contact-link {
+        font-size: 12px;  /* was 11px */
+    }
+
+    .separator {
+        margin: 0 5px;
+    }
+
+    .project-title {
+        font-size: 16px;  /* ADD THIS - was missing */
+    }
+
+    .project-type {
+        font-size: 9px;  /* ADD THIS - was missing */
+    }
+}
+
